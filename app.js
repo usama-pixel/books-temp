@@ -17,6 +17,8 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "Home" });
 });
 
+if (!process.env.MONGOOSE_URI) throw new Error('MONGOOSE_URI is undefined')
+
 mongoose
   .connect(process.env.MONGOOSE_URI, {
     useNewUrlParser: true,
